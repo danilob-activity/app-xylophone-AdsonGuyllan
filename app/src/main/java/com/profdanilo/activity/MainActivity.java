@@ -4,6 +4,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.profdanilo.activity.R;
@@ -27,17 +28,69 @@ public class MainActivity extends AppCompatActivity {
     private int mASoundId;
     private int mBSoundId;
 
+    private SoundPool mSoundPool;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // TODO: Create a new SoundPool
+        mSoundPool = new SoundPool(NR_OF_SIMULTANEOUS_SOUNDS,AudioManager.STREAM_MUSIC,0);
 
 
         // TODO: Load and get the IDs to identify the sounds
+        mCSoundId =
+                mSoundPool.load(getApplicationContext(),R.raw.note1_c,1);
+        mDSoundId =
+                mSoundPool.load(getApplicationContext(),R.raw.note2_d,1);
+        mESoundId =
+                mSoundPool.load(getApplicationContext(),R.raw.note3_e,1);
+        mFSoundId =
+                mSoundPool.load(getApplicationContext(),R.raw.note4_f,1);
+        mGSoundId =
+                mSoundPool.load(getApplicationContext(),R.raw.note5_g,1);
+        mASoundId =
+                mSoundPool.load(getApplicationContext(),R.raw.note6_a,1);
+        mBSoundId =
+                mSoundPool.load(getApplicationContext(),R.raw.note7_b,1);
 
 
+    }
+
+    public void PlayC(View view) {
+        Log.d("Xylophone", "Red Button");
+        mSoundPool.play(mCSoundId,LEFT_VOLUME,RIGHT_VOLUME,PRIORITY,NO_LOOP,NORMAL_PLAY_RATE);
+    }
+
+    public void PlayD(View view) {
+        Log.d("Xylophone", "Orange Button");
+        mSoundPool.play(mDSoundId,LEFT_VOLUME,RIGHT_VOLUME,PRIORITY,NO_LOOP,NORMAL_PLAY_RATE);
+    }
+
+    public void PlayE(View view) {
+        Log.d("Xylophone", "Yellow Button");
+        mSoundPool.play(mESoundId,LEFT_VOLUME,RIGHT_VOLUME,PRIORITY,NO_LOOP,NORMAL_PLAY_RATE);
+    }
+
+    public void PlayF(View view) {
+        Log.d("Xylophone", "Green Button");
+        mSoundPool.play(mFSoundId,LEFT_VOLUME,RIGHT_VOLUME,PRIORITY,NO_LOOP,NORMAL_PLAY_RATE);
+    }
+
+    public void PlayG(View view) {
+        Log.d("Xylophone", "Turquoise Button");
+        mSoundPool.play(mGSoundId,LEFT_VOLUME,RIGHT_VOLUME,PRIORITY,NO_LOOP,NORMAL_PLAY_RATE);
+    }
+
+    public void PlayA(View view) {
+        Log.d("Xylophone", "Blue Button");
+        mSoundPool.play(mASoundId,LEFT_VOLUME,RIGHT_VOLUME,PRIORITY,NO_LOOP,NORMAL_PLAY_RATE);
+    }
+
+    public void PlayB(View view) {
+        Log.d("Xylophone", "Purple Button");
+        mSoundPool.play(mBSoundId,LEFT_VOLUME,RIGHT_VOLUME,PRIORITY,NO_LOOP,NORMAL_PLAY_RATE);
     }
 
     // TODO: Add the play methods triggered by the buttons
